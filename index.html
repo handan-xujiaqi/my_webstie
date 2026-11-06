@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>许家祺 · 个人主页</title>
+<meta name="description" content="许家祺，河北邯郸人，羽毛球爱好者，公考备考中。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3.2 19.6c-.9-.9-.9-2.4 0-3.3L12 7.5l4.1 4.1-8.8 8.8c-.9.9-2.4.9-3.3 0l-.8-.8z' fill='%23146B5C'/%3E%3Cpath d='M15.4 2.6c.7 2 .4 4.1-1 5.5l-.6.6-3-3 .6-.6c1.4-1.4 3.5-1.7 5.5-1l-1.5-1.5z' fill='%23E07B3F'/%3E%3Ccircle cx='14.4' cy='9.9' r='1.1' fill='%23E07B3F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+/* ============ 设计令牌 ============ */
+:root{
+  --bg: #F4F6F3;
+  --bg-deep: #E8EFEA;
+  --surface: #FFFFFF;
+  --ink: #172522;
+  --ink-soft: #33453F;
+  --muted: #64746F;
+  --primary: #146B5C;
+  --primary-deep: #0D4F44;
+  --primary-soft: #DCEAE4;
+  --accent: #E07B3F;
+  --line: #D9E2DD;
+  --serif: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  --sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --maxw: 1120px;
+  --radius: 14px;
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.75;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+::selection{ background: var(--primary); color:#fff; }
+img{ display:block; max-width:100%; }
+a{ color: inherit; text-decoration: none; }
+.container{ max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+
+/* ============ 顶部导航 ============ */
+.nav{
+  position: fixed; top:0; left:0; right:0; z-index: 50;
+  background: rgba(244,246,243,.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  transition: box-shadow .3s;
+}
+.nav.scrolled{ box-shadow: 0 4px 18px rgba(23,37,34,.06); }
+.nav-inner{
+  max-width: var(--maxw); margin:0 auto; padding: 0 28px;
+  height: 66px; display:flex; align-items:center; justify-content:space-between;
+}
+.brand{ font-family: var(--serif); font-weight:900; font-size:19px; color: var(--primary-deep); letter-spacing:.02em; }
+.brand .dot{ color: var(--accent); }
+.nav-links{ display:flex; gap: 34px; align-items:center; }
+.nav-links a{
+  font-size:15px; color: var(--ink-soft); font-weight:500;
+  padding: 4px 0; position: relative; transition: color .25s;
+}
+.nav-links a::after{
+  content:""; position:absolute; left:0; bottom:-2px; height:2px; width:0;
+  background: var(--accent); transition: width .28s;
+}
+.nav-links a:hover{ color: var(--primary); }
+.nav-links a:hover::after{ width:100%; }
+.nav-links a.active{ color: var(--primary); }
+.nav-links a.active::after{ width:100%; background: var(--primary); }
+.nav-cta{
+  border:1px solid var(--primary); color: var(--primary);
+  padding: 7px 18px; border-radius: 999px; font-size:14px; font-weight:500;
+  transition: all .25s;
+}
+.nav-cta:hover{ background: var(--primary); color:#fff; }
+.nav-burger{ display:none; background:none; border:none; cursor:pointer; width:40px; height:40px; position:relative; }
+.nav-burger span{ position:absolute; left:9px; width:22px; height:2px; background: var(--ink); transition: all .3s; }
+.nav-burger span:nth-child(1){ top:13px; }
+.nav-burger span:nth-child(2){ top:20px; }
+.nav-burger span:nth-child(3){ top:27px; }
+.nav-burger.open span:nth-child(1){ top:20px; transform: rotate(45deg); }
+.nav-burger.open span:nth-child(2){ opacity:0; }
+.nav-burger.open span:nth-child(3){ top:20px; transform: rotate(-45deg); }
+
+/* ============ Hero ============ */
+.hero{
+  position: relative; min-height: 100vh; min-height: 100svh;
+  display: flex; align-items: center;
+  overflow: hidden;
+  background: var(--primary-deep);
+}
+.hero-bg{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit: cover; object-position: 72% center;
+  opacity: .92;
+}
+.hero::after{
+  content:""; position:absolute; inset:0;
+  background:
+    linear-gradient(100deg, rgba(10,38,33,.93) 0%, rgba(10,38,33,.72) 34%, rgba(10,38,33,.18) 62%, rgba(10,38,33,.35) 100%);
+}
+.hero-inner{
+  position: relative; z-index: 2; width: 100%;
+  padding: 120px 0 90px;
+}
+.hero-content{ max-width: 640px; }
+.hero-kicker{
+  display:inline-flex; align-items:center; gap:10px;
+  color: #C8E3DA; font-size:14px; letter-spacing:.14em;
+  border:1px solid rgba(200,227,218,.35);
+  padding: 7px 16px; border-radius:999px; margin-bottom: 26px;
+}
+.hero-kicker::before{ content:""; width:16px; height:2px; background: var(--accent); }
+.hero h1{
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(58px, 9vw, 108px);
+  line-height: 1.06; color: #FDFEFD;
+  letter-spacing: .06em;
+}
+.hero h1 .thin{ font-weight: 500; }
+.hero-tags{
+  margin-top: 22px; display:flex; flex-wrap:wrap; gap:12px;
+}
+.hero-tags span{
+  font-size:15px; color: #DDEBE5;
+  background: rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.16);
+  padding: 6px 16px; border-radius: 999px;
+}
+.hero-quote{
+  margin-top: 30px; font-size: 19px; color: #EAF2EE;
+  font-family: var(--serif); line-height: 1.9; max-width: 460px;
+}
+.hero-quote em{ font-style: normal; color: #F5C896; }
+.hero-actions{ margin-top: 38px; display:flex; gap: 16px; flex-wrap:wrap; }
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding: 13px 30px; border-radius: 999px; font-size: 15px; font-weight: 500;
+  cursor:pointer; border:none; transition: all .25s; font-family: var(--sans);
+}
+.btn-solid{ background: var(--accent); color:#fff; }
+.btn-solid:hover{ background: #C96A31; transform: translateY(-2px); box-shadow: 0 8px 22px rgba(224,123,63,.35); }
+.btn-ghost{ background: transparent; color:#fff; border:1.5px solid rgba(255,255,255,.55); }
+.btn-ghost:hover{ background: rgba(255,255,255,.12); border-color:#fff; }
+
+/* 弧线轨迹装饰 */
+.arc-wrap{ position:absolute; right:0; bottom: 56px; left:0; z-index:2; pointer-events:none; }
+.arc-svg{ display:block; width:100%; height: 130px; }
+.arc-svg path{ fill:none; stroke: rgba(255,255,255,.28); stroke-width: 2; stroke-dasharray: 6 8; }
+.arc-shuttle{
+  position:absolute; right: 10%; bottom: 6px;
+  animation: shuttle-fly 9s ease-in-out infinite;
+}
+@keyframes shuttle-fly{
+  0%,100%{ transform: translate(0,0) rotate(0deg); }
+  50%{ transform: translate(-120px,-46px) rotate(-14deg); }
+}
+.scroll-hint{
+  position:absolute; bottom: 26px; left:50%; transform: translateX(-50%);
+  z-index:3; color: rgba(255,255,255,.75); font-size: 13px; letter-spacing:.1em;
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+}
+.scroll-hint .line{ width:1px; height: 42px; background: rgba(255,255,255,.5); overflow:hidden; position:relative; }
+.scroll-hint .line::after{
+  content:""; position:absolute; top:-100%; left:0; width:100%; height:100%;
+  background:#fff; animation: drip 2.2s ease-in-out infinite;
+}
+@keyframes drip{ 0%{ top:-100%; } 60%,100%{ top:100%; } }
+
+/* ============ 章节通用 ============ */
+.section{ padding: 108px 0; }
+.section-alt{ background: var(--bg-deep); }
+.section-head{ max-width: 640px; margin-bottom: 56px; }
+.eyebrow{
+  display:inline-flex; align-items:center; gap: 12px;
+  font-size: 13px; letter-spacing: .18em; color: var(--primary);
+  font-weight: 500; margin-bottom: 16px;
+}
+.eyebrow::before{ content:""; width: 26px; height: 2px; background: var(--accent); }
+.section-head h2{
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(32px, 4.6vw, 46px);
+  color: var(--ink); letter-spacing: .03em; line-height: 1.25;
+}
+.section-head .sub{ margin-top: 16px; color: var(--muted); font-size: 16.5px; max-width: 560px; }
+
+/* 滚动揭示 */
+.reveal{ opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in{ opacity: 1; transform: none; }
+
+/* ============ 关于我 ============ */
+.about-grid{
+  display:grid; grid-template-columns: 380px 1fr; gap: 64px; align-items:start;
+}
+.about-card{
+  background: var(--surface); border:1px solid var(--line); border-radius: var(--radius);
+  padding: 36px 32px; text-align:center;
+  box-shadow: 0 10px 30px rgba(23,37,34,.05);
+}
+.about-avatar{
+  width: 100%; aspect-ratio: 4/3; border-radius: 10px; overflow:hidden;
+  margin: 0 0 18px; border: 3px solid var(--primary-soft);
+}
+.about-avatar img{ width:100%; height:100%; object-fit:cover; object-position: center 30%; }
+.about-card h3{ font-family: var(--serif); font-size: 24px; font-weight: 700; color: var(--ink); }
+.about-card .role{ color: var(--muted); font-size: 14px; margin-top: 6px; }
+.about-card .taglist{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top: 18px; }
+.about-card .taglist span{
+  font-size: 12.5px; color: var(--primary); background: var(--primary-soft);
+  padding: 4px 12px; border-radius: 999px;
+}
+.about-bio h4{
+  font-family: var(--serif); font-size: 26px; font-weight:700; color: var(--ink);
+  margin-bottom: 18px; line-height:1.4;
+}
+.about-bio h4 .hl{ color: var(--primary); }
+.about-bio p{ color: var(--ink-soft); margin-bottom: 16px; font-size: 16.5px; }
+.about-bio p .note{ color: var(--muted); font-size: 14px; }
+.fact-row{
+  margin-top: 34px; display:grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.fact{
+  background: var(--surface); border:1px solid var(--line);
+  border-left: 3px solid var(--primary);
+  border-radius: 8px; padding: 18px 20px;
+}
+.fact .num{ font-family: var(--serif); font-size: 21px; font-weight: 700; color: var(--primary-deep); }
+.fact .lbl{ font-size: 13px; color: var(--muted); margin-top: 3px; }
+
+/* ============ 羽毛球 ============ */
+.badminton-grid{
+  display:grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items:center;
+}
+.badminton-visual{ position: relative; }
+.badminton-visual .img-frame{
+  border-radius: var(--radius); overflow:hidden;
+  box-shadow: 0 18px 46px rgba(13,79,68,.16);
+  aspect-ratio: 4/3;
+}
+.badminton-visual img{ width:100%; height:100%; object-fit:cover; }
+.visual-tag{
+  position:absolute; right:-12px; bottom:22px;
+  background: var(--accent); color:#fff;
+  padding: 10px 18px; border-radius: 999px;
+  font-size: 13.5px; font-weight:500; box-shadow: 0 8px 20px rgba(224,123,63,.4);
+}
+.badminton-copy h4{ font-family: var(--serif); font-size: 26px; font-weight:700; margin-bottom: 14px; color: var(--ink); }
+.badminton-copy p{ color: var(--ink-soft); font-size: 16.5px; margin-bottom: 14px; }
+.badminton-copy p .note{ color: var(--muted); font-size: 14px; }
+.reasons{ margin-top: 22px; display:flex; flex-direction:column; gap: 12px; }
+.reason{
+  display:flex; gap: 14px; align-items:flex-start;
+  background: var(--surface); border:1px solid var(--line);
+  border-radius: 10px; padding: 14px 18px;
+}
+.reason .ico{
+  flex:none; width:34px; height:34px; border-radius: 9px;
+  background: var(--primary-soft); color: var(--primary);
+  display:flex; align-items:center; justify-content:center;
+}
+.reason b{ display:block; font-size: 15.5px; font-weight:600; color: var(--ink); }
+.reason span{ font-size: 14px; color: var(--muted); }
+
+/* ============ 公考目标 ============ */
+.goal-intro{
+  background: linear-gradient(120deg, var(--primary-deep), var(--primary));
+  border-radius: 18px; padding: 44px 48px; color:#fff;
+  display:grid; grid-template-columns: 1.4fr 1fr; gap: 34px; align-items:center;
+  box-shadow: 0 20px 50px rgba(13,79,68,.25);
+}
+.goal-intro h4{ font-family: var(--serif); font-size: 26px; font-weight:700; line-height: 1.5; }
+.goal-intro h4 .hl{ color: #F5C896; }
+.goal-intro p{ margin-top: 14px; color: #DDEBE5; font-size: 15.5px; }
+.goal-metric{
+  background: rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2);
+  border-radius: 14px; padding: 22px 24px; text-align:center;
+}
+.goal-metric .big{ font-family: var(--serif); font-size: 30px; font-weight:900; color: #F5C896; }
+.goal-metric .sm{ font-size: 13.5px; color:#DDEBE5; margin-top: 4px; }
+
+.timeline{ margin-top: 60px; }
+.timeline-title{ font-family: var(--serif); font-size: 22px; font-weight:700; color: var(--ink); margin-bottom: 30px; }
+.tl{ position: relative; --tcol: 96px; --dcol: 34px; --tgap: 18px; }
+.tl::before{
+  content:""; position:absolute; top: 10px; bottom: 40px;
+  left: calc(var(--tcol) + var(--tgap) + var(--dcol) / 2 - 1px);
+  width: 2px;
+  background: linear-gradient(to bottom, var(--primary), var(--primary-soft));
+}
+.tl-item{ display:grid; grid-template-columns: var(--tcol) var(--dcol) 1fr; column-gap: var(--tgap); }
+.tl-item .t-time{
+  text-align:right; padding: 6px 0;
+  font-size: 14px; color: var(--primary); font-weight:500; white-space:nowrap;
+}
+.tl-item .t-dot{
+  justify-self:center; align-self:start;
+  width: 13px; height: 13px; border-radius: 50%;
+  background: var(--surface); border: 3px solid var(--primary);
+  margin-top: 10px;
+  z-index: 1;
+}
+.tl-item .t-dot.hot{ background: var(--accent); border-color: var(--accent); }
+.tl-item .t-body{ padding: 0 0 34px; }
+.tl-item .t-card{
+  background: var(--surface); border:1px solid var(--line);
+  border-radius: 10px; padding: 16px 20px;
+}
+.tl-item .t-card b{ display:block; font-size: 15.5px; color: var(--ink); font-weight:600; }
+.tl-item .t-card span{ font-size: 14px; color: var(--muted); }
+
+/* ============ 联系 ============ */
+.contact-grid{
+  display:grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+}
+.contact-card{
+  background: var(--surface); border:1px solid var(--line);
+  border-radius: var(--radius); padding: 30px 28px;
+  transition: transform .25s, box-shadow .25s;
+}
+.contact-card:hover{ transform: translateY(-4px); box-shadow: 0 14px 34px rgba(23,37,34,.09); }
+.contact-card .c-ico{
+  width: 44px; height:44px; border-radius: 12px;
+  background: var(--primary-soft); color: var(--primary);
+  display:flex; align-items:center; justify-content:center; margin-bottom: 16px;
+}
+.contact-card h5{ font-size: 16px; font-weight:600; color: var(--ink); margin-bottom: 6px; }
+.contact-card p{ font-size: 14.5px; color: var(--muted); }
+.contact-card p.placeholder{ font-size: 13px; color: #9AA8A2; font-style: italic; }
+.contact-card p.value{ font-family: var(--serif); font-size: 15px; font-weight:700; color: var(--primary); letter-spacing:.04em; word-break:break-all; }
+
+/* ============ 页脚 ============ */
+footer{
+  border-top: 1px solid var(--line); background: var(--bg-deep);
+  padding: 30px 0;
+}
+.foot-inner{
+  max-width: var(--maxw); margin:0 auto; padding: 0 28px;
+  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;
+}
+.foot-inner .f-brand{ font-family: var(--serif); font-weight:700; color: var(--primary-deep); }
+.foot-inner .f-note{ font-size: 13px; color: var(--muted); }
+
+/* 返回顶部 */
+.to-top{
+  position: fixed; right: 26px; bottom: 26px; z-index: 40;
+  width: 46px; height:46px; border-radius: 50%;
+  background: var(--primary); color:#fff; border:none; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; visibility:hidden; transform: translateY(12px);
+  transition: all .3s; box-shadow: 0 8px 20px rgba(13,79,68,.35);
+}
+.to-top.show{ opacity:1; visibility:visible; transform:none; }
+.to-top:hover{ background: var(--primary-deep); }
+
+/* ============ 响应式 ============ */
+@media (max-width: 960px){
+  .about-grid{ grid-template-columns: 1fr; gap: 40px; }
+  .about-bio{ order:-1; }
+  .fact-row{ grid-template-columns: repeat(3, 1fr); }
+  .badminton-grid{ grid-template-columns: 1fr; gap: 40px; }
+  .goal-intro{ grid-template-columns: 1fr; }
+  .contact-grid{ grid-template-columns: 1fr 1fr; }
+  .tl{ --tcol: 84px; --dcol: 30px; --tgap: 14px; }
+}
+@media (max-width: 680px){
+  .container, .nav-inner, .foot-inner{ padding-left: 20px; padding-right: 20px; }
+  .section{ padding: 78px 0; }
+  .nav-links{
+    position:fixed; top:66px; left:0; right:0; background: var(--bg);
+    flex-direction:column; gap:0; padding: 10px 0 18px;
+    border-bottom:1px solid var(--line);
+    transform: translateY(-120%); transition: transform .3s; z-index: 49;
+  }
+  .nav-links.open{ transform:none; }
+  .nav-links a{ width:100%; text-align:center; padding: 12px 0; font-size:16px; }
+  .nav-links .nav-cta{ margin: 10px auto 0; }
+  .nav-burger{ display:block; }
+  .hero{ min-height: 92vh; }
+  .hero-inner{ padding: 96px 0 72px; }
+  .hero h1{ font-size: clamp(44px, 13vw, 64px); }
+  .hero-quote{ font-size: 16.5px; }
+  .fact-row{ grid-template-columns: 1fr; gap: 12px; }
+  .contact-grid{ grid-template-columns: 1fr; }
+  .goal-intro{ padding: 32px 24px; }
+  .tl{ --tcol: 74px; --dcol: 26px; --tgap: 10px; }
+  .tl-item .t-card span{ font-size: 13px; }
+  .arc-shuttle{ right: 6%; }
+  .scroll-hint{ display:none; }
+}
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important; }
+  html{ scroll-behavior:auto; }
+  .reveal{ opacity:1; transform:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ 导航 ============ -->
+<header class="nav" id="topnav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">许家祺<span class="dot">.</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about" data-sec="about">关于我</a>
+      <a href="#badminton" data-sec="badminton">羽毛球</a>
+      <a href="#goal" data-sec="goal">公考目标</a>
+      <a href="#contact" class="nav-cta">联系我</a>
+    </nav>
+    <button class="nav-burger" id="navBurger" aria-label="打开菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ Hero ============ -->
+<section class="hero" id="top">
+  <img class="hero-bg" src="assets/hero.jpg" alt="许家祺挥拍击打羽毛球">
+  <div class="hero-inner container">
+    <div class="hero-content">
+      <p class="hero-kicker">个人主页 · 2026</p>
+      <h1>许家祺</h1>
+      <div class="hero-tags">
+        <span>河北 · 邯郸</span>
+        <span>羽毛球爱好者</span>
+        <span>公考备考中</span>
+      </div>
+      <p class="hero-quote">球场上的每一拍，<br>都是对<em>目标</em>的练习。</p>
+      <div class="hero-actions">
+        <button class="btn btn-solid" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">了解我</button>
+        <button class="btn btn-ghost" onclick="document.getElementById('goal').scrollIntoView({behavior:'smooth'})">我的公考目标</button>
+      </div>
+    </div>
+  </div>
+  <div class="arc-wrap" aria-hidden="true">
+    <svg class="arc-svg" viewBox="0 0 1200 130" preserveAspectRatio="none">
+      <path d="M -40 110 C 300 20, 700 120, 1240 10"/>
+    </svg>
+    <svg class="arc-shuttle" width="26" height="26" viewBox="0 0 24 24" fill="none">
+      <path d="M3.2 19.6c-.9-.9-.9-2.4 0-3.3L12 7.5l4.1 4.1-8.8 8.8c-.9.9-2.4.9-3.3 0l-.8-.8z" fill="#F5C896"/>
+      <path d="M15.4 2.6c.7 2 .4 4.1-1 5.5l-.6.6-3-3 .6-.6c1.4-1.4 3.5-1.7 5.5-1l-1.5-1.5z" fill="#FDFEFD"/>
+      <circle cx="14.4" cy="9.9" r="1.1" fill="#FDFEFD"/>
+    </svg>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <span>向下滚动</span>
+    <span class="line"></span>
+  </div>
+</section>
+
+<!-- ============ 关于我 ============ -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">关于我</p>
+      <h2>从邯郸出发，向目标进发</h2>
+      <p class="sub">一个爱运动的河北小伙，正在为自己的下一个目标做准备。</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card reveal">
+        <div class="about-avatar"><img src="微信图片_20261007182253_5_173.jpg" alt="许家祺与朋友们的合影"></div>
+        <h3>许家祺</h3>
+        <p class="role">河北邯郸人 · 公考备考中</p>
+        <div class="taglist">
+          <span>羽毛球</span><span>自律</span><span>备考</span>
+        </div>
+      </div>
+      <div class="about-bio reveal">
+        <h4>你好，我是<span class="hl">许家祺</span></h4>
+        <p>我来自河北<span class="hl">邯郸</span>——战国时期赵国的都城，一座既有历史厚重感、又踏实低调的城市。受家乡影响，我做事讲究一步一个脚印，不喜欢投机取巧。</p>
+        <p>课余时间我基本都泡在羽毛球场上。<span class="hl">打羽毛球</span>让我在学习和生活的压力里保持节奏：每一次挥拍、每一次救球，都是在训练专注与韧性。</p>
+        <p>如今毕业在即，我把目光投向<span class="hl">公务员</span>这条路，正在系统地备考行测与申论。我相信运动和备考其实是一回事——<span class="note">定下目标，拆成每天的小步骤，然后坚持打完。</span></p>
+        <div class="fact-row">
+          <div class="fact"><div class="num">邯郸</div><div class="lbl">家乡 · 河北</div></div>
+          <div class="fact"><div class="num">羽毛球</div><div class="lbl">最爱运动</div></div>
+          <div class="fact"><div class="num">公务员</div><div class="lbl">毕业目标</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 羽毛球 ============ -->
+<section class="section section-alt" id="badminton">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">羽毛球</p>
+      <h2>为什么是羽毛球</h2>
+      <p class="sub">球场上没有捷径，只有一拍一拍地练——这也是我喜欢它的原因。</p>
+    </div>
+    <div class="badminton-grid">
+      <div class="badminton-visual reveal">
+        <div class="img-frame">
+          <img src="微信图片_20261007182319_6_173.jpg" alt="许家祺常去的羽毛球馆">
+        </div>
+        <span class="visual-tag">我的主场</span>
+      </div>
+      <div class="badminton-copy reveal">
+        <h4>把每一拍都当成练习</h4>
+        <p>羽毛球是我坚持最久的一项运动。从最开始连发球都打不稳，到现在能在场上打出回合，靠的是每周固定时间的练习和复盘。<span class="note">（具体球龄、每周打球频率等，可按你的实际情况替换）</span></p>
+        <p>它带给我的不只是汗水和快乐，更是一套面对事情的方法：看清自己的弱点，拆解它，然后用重复的练习把它补上。</p>
+        <div class="reasons">
+          <div class="reason">
+            <div class="ico">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <div><b>反应与专注</b><span>球速很快，场上每一秒都要集中注意力，练出了我的专注力。</span></div>
+          </div>
+          <div class="reason">
+            <div class="ico">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.6-9.2-9A5.2 5.2 0 0 1 12 6.6 5.2 5.2 0 0 1 21.2 12C19 16.4 12 21 12 21z"/></svg>
+            </div>
+            <div><b>释放与解压</b><span>大汗淋漓一场，学习备考的压力也跟着释放干净。</span></div>
+          </div>
+          <div class="reason">
+            <div class="ico">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div><b>坚持与伙伴</b><span>和球友约球、互相进步，让坚持这件事变得容易许多。</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 公考目标 ============ -->
+<section class="section" id="goal">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">公考目标</p>
+      <h2>毕业后的下一站：公务员</h2>
+      <p class="sub">把羽毛球教会我的方法，用在备考上——拆解、练习、复盘。</p>
+    </div>
+
+    <div class="goal-intro reveal">
+      <div>
+        <h4>目标：毕业后考取<span class="hl">公务员</span>，回到家乡，踏踏实实做一份服务群众的工作。</h4>
+        <p>公务员对我来说，不只是一份稳定的职业，更是一种把生活过得有秩序、把能力用在社会需要的地方的方式。备考和打球很像：方法正确，加上日复一日的坚持。</p>
+      </div>
+      <div class="goal-metric">
+        <div class="big">行测 + 申论</div>
+        <div class="sm">两大笔试科目 · 正在系统备考</div>
+      </div>
+    </div>
+
+    <div class="timeline reveal">
+      <h3 class="timeline-title">我的备考路线</h3>
+      <div class="tl">
+
+        <div class="tl-item">
+          <div class="t-time">准备期</div>
+          <div class="t-dot"></div>
+          <div class="t-body">
+            <div class="t-card"><b>了解考情，确定方向</b><span>梳理国考与省考的时间、科目与岗位要求，圈定适合自己的报考方向。</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="t-time">学习期</div>
+          <div class="t-dot"></div>
+          <div class="t-body">
+            <div class="t-card"><b>系统学习，打好基础</b><span>行测分模块学习（言语、判断、资料、数量、常识），申论坚持每日积累素材与规范表达。</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="t-time">刷题期</div>
+          <div class="t-dot"></div>
+          <div class="t-body">
+            <div class="t-card"><b>专项刷题，错题复盘</b><span>按模块刷题建立题感，把错题整理成册，每周复盘一次薄弱点。</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="t-time">冲刺期</div>
+          <div class="t-dot"></div>
+          <div class="t-body">
+            <div class="t-card"><b>全真模考，调整节奏</b><span>按考试时间做整套模拟，训练时间分配与心态，查漏补缺。</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="t-time">笔试</div>
+          <div class="t-dot hot"></div>
+          <div class="t-body">
+            <div class="t-card"><b>参加笔试</b><span>从容走进考场，把平时的练习正常发挥出来。</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="t-time">上岸</div>
+          <div class="t-dot hot"></div>
+          <div class="t-body">
+            <div class="t-card"><b>面试 · 政审 · 入职</b><span>通过面试、体检与政审，正式走上工作岗位，开始新的篇章。</span></div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-top:6px;">注：以上为通用备考节奏，具体时间与科目安排可按你的实际计划调整。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 联系 ============ -->
+<section class="section section-alt" id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">联系我</p>
+      <h2>欢迎交流，一起进步</h2>
+      <p class="sub">无论是约球、交流备考，还是任何想聊的事情，都欢迎找到我。</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <div class="c-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        </div>
+        <h5>邮箱</h5>
+        <p class="value">442966308@qq.com</p>
+      </div>
+      <div class="contact-card reveal">
+        <div class="c-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <h5>微信</h5>
+        <p class="value">Xjq080501</p>
+      </div>
+      <div class="contact-card reveal">
+        <div class="c-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h5>坐标</h5>
+        <p>河北 · 邯郸</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 页脚 ============ -->
+<footer>
+  <div class="foot-inner">
+    <span class="f-brand">许家祺</span>
+    <span class="f-note">用羽毛球的精神，奔赴每一个目标 · 2026</span>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="返回顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+
+<script>
+(function(){
+  "use strict";
+  var nav = document.getElementById('topnav');
+  var links = document.querySelectorAll('.nav-links a[data-sec]');
+  var burger = document.getElementById('navBurger');
+  var navLinks = document.getElementById('navLinks');
+  var toTop = document.getElementById('toTop');
+
+  function onScroll(){
+    if (window.scrollY > 10) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+    if (window.scrollY > 600) toTop.classList.add('show');
+    else toTop.classList.remove('show');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  burger.addEventListener('click', function(){
+    burger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      burger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  toTop.addEventListener('click', function(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // 滚动揭示
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(function(el){ io.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // 导航高亮当前章节
+  var secs = ['about','badminton','goal','contact'].map(function(id){ return document.getElementById(id); });
+  var secObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var id = e.target.id;
+        links.forEach(function(a){
+          a.classList.toggle('active', a.dataset.sec === id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  secs.forEach(function(s){ if (s) secObs.observe(s); });
+})();
+</script>
+</body>
+</html>
